@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-</head>
-<body>
-  
-</body>
+<html>
+  <head>
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      var state = true;
+      function toggleLight(){
+        var image = document.getElementById("image");
+        state = !state;
+        image.src = state ? "https://lh6.googleusercontent.com/khplodaoP4ULgzWu6epPCQS0zxM59o3UVUd7lT6cSz-IXy_fAI5GWPmm9v1WHq4csto8BilmAC0KLyxUsWXc=w999-h920-rw":"https://lh4.googleusercontent.com/LXekIrEjvtUbSjxA5B7nIGKMEEqsZb4SU20gwGrhNa9O3fIGvJnCBAsn_favZr6dp9TvKykMsKGpaU6m3811=w999-h927-rw";
+      }
+
+      function enter(){
+        var timeLeft = document.getElementById('input').value;
+        document.getElementById("timer").innerHTML = timeLeft;
+        var id = setInterval(countDownTimer, 1000);
+
+        function countDownTimer(){
+        
+          timeLeft = timeLeft - 1;
+          document.getElementById("timer").innerHTML = timeLeft;
+          if(timeLeft <= 0){
+            document.getElementById("image").src = "https://lh4.googleusercontent.com/LXekIrEjvtUbSjxA5B7nIGKMEEqsZb4SU20gwGrhNa9O3fIGvJnCBAsn_favZr6dp9TvKykMsKGpaU6m3811=w999-h927-rw"
+            clearInterval(id);
+          }
+          
+        }
+      }
+    </script>
+    <img id="image" src="https://lh6.googleusercontent.com/khplodaoP4ULgzWu6epPCQS0zxM59o3UVUd7lT6cSz-IXy_fAI5GWPmm9v1WHq4csto8BilmAC0KLyxUsWXc=w999-h920-rw">
+    <div class="div" id="timer"></div>
+    <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
+    <form>
+      <input type="text" id="input">
+      <input type="button" value="enter" onclick="enter()">
+    </form>
+  </body>
 </html>
