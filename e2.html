@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+  </head>
+  <body>
+    <script>
+      var state = true;
+      function toggleLight(){
+        var image = document.getElementById("image");
+        state = !state;
+        image.src = state ? "img/on.jpg":"img/off.jpg";
+      }
+
+      function enter(){
+        if(isNaN(document.getElementById('input').value)){
+          alert("enter again");
+          return;
+        }
+        var timeLeft = document.getElementById('input').value;
+        document.getElementById("timer").innerHTML = timeLeft;
+        var id = setInterval(countDownTimer, 1000);
+
+        function countDownTimer(){
+        
+          timeLeft = timeLeft - 1;
+          document.getElementById("timer").innerHTML = timeLeft;
+          if(timeLeft <= 0){
+            document.getElementById("image").src = "img/off.jpg"
+            clearInterval(id);
+          }
+          
+        }
+      }
+    </script>
+    <img id="image" src="img/on.jpg">
+    <div class="div" id="timer"></div>
+    <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
+    <form>
+      <input type="text" id="input">
+      <input type="button" value="enter" onclick="enter()">
+    </form>
+  </body>
+</html>
