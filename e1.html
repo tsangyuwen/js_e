@@ -13,6 +13,10 @@
       }
 
       function enter(){
+        if(typeof document.getElementById('input').value != number){
+          alert("please enter number");
+          return;
+        }
         var timeLeft = document.getElementById('input').value;
         document.getElementById("timer").innerHTML = timeLeft;
         var id = setInterval(countDownTimer, 1000);
