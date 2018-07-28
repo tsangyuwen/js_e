@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>e5</title>
+  </head>
+  <body>
+    <script>
+      function createToDo(){
+        var todo = document.createElement("div");
+        var span = document.createElement("span");
+        var replaceButton = document.createElement("button");
+        var removeButton = document.createElement("button");
+
+        var input = document.getElementById('input').value;
+        if(input == ""){
+          input = "word";
+        }
+        if(document.getElementById('urgent').checked){
+          span.style.color="red";
+        }else{
+          span.style.color="darkgreen"
+        }
+        span.innerHTML = input;
+        todo.appendChild(span);
+
+        replaceButton.onclick = function(){
+          var input = document.getElementById('input').value;
+          if(input == ""){
+            alert("you didn't enter any text");
+            return;
+          }
+          this.parentNode.firstChild.innerHTML = input;
+          document.getElementById('input').value = "";
+        }
+
+        replaceButton.textContent = "R";
+        todo.appendChild(replaceButton);
+
+        removeButton.onclick = function(){
+          var answer = confirm("OK?");
+          if(answer){
+            this.parentNode.childNodes[0].style.color="gray";
+            this.parentNode.removeChild(this.parentNode.childNodes[1]);
+            this.parentNode.removeChild(this);
+          }
+          
+        }
+
+        removeButton.textContent = "-";
+        todo.appendChild(removeButton);
+
+        document.getElementById('todolist').appendChild(todo);
+
+        document.getElementById('input').value = "";
+
+      }
+    </script>
+    <form>
+      <input type="text" id="input">
+      <input type="button" value="+" onclick="createToDo()">
+      <input type="radio" name="state" checked>general
+      <input type="radio" id="urgent" name="state">urgent
+    </form>
+    <div id="todolist"></div>
+    <a href="index.html">e1</a>
+    <a href="e2.html">e2</a>
+    <a href="e3.html">e3</a>
+    <a href="e4.html">e4</a>
+    <a href="e5.html">e5</a>
+  </body>
+</html>
