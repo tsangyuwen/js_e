@@ -13,8 +13,8 @@
       }
 
       function enter(){
-        if(typeof document.getElementById('input').value != number){
-          alert("please enter number");
+        if(isNaN(document.getElementById('input').value)){
+          alert("enter again");
           return;
         }
         var timeLeft = document.getElementById('input').value;
