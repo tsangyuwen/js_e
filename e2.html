@@ -5,40 +5,37 @@
   </head>
   <body>
     <script>
-      var state = true;
-      function toggleLight(){
-        var image = document.getElementById("image");
-        state = !state;
-        image.src = state ? "img/on.jpg":"img/off.jpg";
-      }
-
       function enter(){
-        if(isNaN(document.getElementById('input').value)){
-          alert("enter again");
+        var code = document.getElementById("enter").value;
+        if(code = ""){
+          alert("please enter your code");
+          return;
+        }else if(!isNaN(code)){
+          alert("first word isn't number");
+          return;
+        }else if(code.length != 10){
+          alert("length wrong");
+          return;
+        }else if(isNaN(code.substring(1,9))){
+          alert("code must be one english word and 9 number");
           return;
         }
-        var timeLeft = document.getElementById('input').value;
-        document.getElementById("timer").innerHTML = timeLeft;
-        var id = setInterval(countDownTimer, 1000);
-
-        function countDownTimer(){
-        
-          timeLeft = timeLeft - 1;
-          document.getElementById("timer").innerHTML = timeLeft;
-          if(timeLeft <= 0){
-            document.getElementById("image").src = "img/off.jpg"
-            clearInterval(id);
-          }
-          
+        if(code.substring(1,2) == "1"){
+          document.getElementById("result").innerHTML = "you are man pass";
+        }else if(code.substring(1,2) == "2"){
+          document.getElementById("result").innerHTML = "you are woman pass";
+        }else{
+          alert("please enter again");
+          return;
         }
+        
       }
     </script>
     <img id="image" src="img/on.jpg">
-    <div class="div" id="timer"></div>
-    <button class="button" onclick="toggleLight();">ON<br>-<br>OFF</button>
     <form>
       <input type="text" id="input">
       <input type="button" value="enter" onclick="enter()">
+      <div id="result"></div>
     </form>
   </body>
 </html>
