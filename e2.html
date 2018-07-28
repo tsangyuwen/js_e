@@ -7,7 +7,8 @@
     <script>
       function enter(){
         var code = document.getElementById("input").value;
-        if(code = ""){
+        document.getElementById("result").innerHTML = "";
+        if(code == ""){
           alert("please enter your code");
           return;
         }else if(!isNaN(code)){
@@ -23,7 +24,7 @@
         if(code.substring(1,2) == "1"){
           document.getElementById("result").innerHTML = "you are man pass";
         }else if(code.substring(1,2) == "2"){
-          document.getElementById("result").innerHTML = "you are woman pass";
+          document.getElementById("result").innerHTML = "you are woman, pass";
         }else{
           alert("please enter again");
           return;
